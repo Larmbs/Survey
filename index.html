@@ -1,1 +1,23 @@
+<form id="surveyForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  
+  <label for="feedback">Feedback:</label>
+  <textarea id="feedback" name="feedback" required></textarea>
+  
+  <button type="submit">Submit</button>
+</form>
 
+<script>
+  document.getElementById("surveyForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+    
+    fetch("https://sheetdb.io/api/v1/YOUR_SHEET_ID", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify([data])
+    }).then(response => alert("Survey submitted!"));
+  });
+</script>
