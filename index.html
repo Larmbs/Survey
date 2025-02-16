@@ -14,7 +14,7 @@
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
     
-    fetch("https://sheetdb.io/api/v1/YOUR_SHEET_ID", {
+    fetch("https://sheetdb.io/api/v1/7r3xg03ugx2r6", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify([data])
